@@ -1,5 +1,15 @@
 # Components & Props
 
+<h2> 🚗 React Roadmap
+
+The goals for Phase 2: </h2>
+
+- Create a static frontend site with components and props (DOM Manipulation)
+
+- Use state and events to make your site dynamic (Event Handling)
+
+- Add side effects and data fetching to communicate with a server (Network Communication)
+
 ### SWBATs:
 
 - [ ] Review the benefits of React over Vanilla JS
@@ -10,6 +20,154 @@
 - [ ] Recognize destructured props and how to work with them
 - [ ] Recognize best practices when writing components and props
 - [ ] Observe how to render multiple components from a list
+
+### Creating a React App
+
+`create-react-app` will build a project folder for our application and install all the dependencies we need (via Node Package Manager).
+
+To create a new React application and start it, run:
+
+```
+npx create-react-app app-name
+cd app-name
+npm start
+```
+
+In addition to React, it gives us:
+
+- Webpack: a tool for bundling and minifying our code (along with a server for running our code in development)
+- Babel: a transpiler that lets us write modern JavaScript and JSX
+
+<h2> React > Vanilla JS </h2>
+
+Instead of describing how to do something:
+
+```js
+const h1 = document.createElement("h1");
+h1.id = "main";
+h1.className = "blue";
+h1.textContent = "Hello!";
+```
+
+We can just describe what we want:
+
+```js
+const h1 = (
+  <h1 id="main" className="blue">
+    Hello from JSX!
+  </h1>
+);
+```
+
+<!-- slide -->
+
+<h2> ⚙️ Components </h2>
+
+<p>
+
+Components are the building blocks of React. A component is a function that:
+
+- Takes in some raw data (props)
+- Returns user interface (JSX)
+
+</p>
+
+```js
+const Header = () => {
+  return (
+    <div>
+      <h3>Hello World</h3>
+    </div>
+  );
+};
+
+ReactDOM.render(<Header />, document.getElementById("root"));
+```
+
+<!-- slide -->
+
+<h2> ⚙️ Component Gotchas </h2>
+
+This is okay:
+
+```js
+function Card() {
+  return (
+    <div id="card1" className="card">
+      <h1>hi</h1>
+      <p>wassup?</p>
+    </div>
+  );
+}
+```
+
+This is NOT okay:
+
+```js
+function card() {
+  return (
+    <h1>hi</h1>
+    <p>wassup?</p>
+  )
+}
+```
+
+- Component name needs to be capitalized
+- Components can only return one element
+
+<!-- slide -->
+
+<h2> 🎩 Props! </h2>
+
+When you create components, one way to make them dynamic and reusable is by passing in props. For example, if we wanted to create several cards on our page using a Card component, we could do so like this:
+
+```js
+function Card(props) {
+  return (
+    <div id="card1" className="card">
+      <h1>{props.greeting}</h1>
+      <p>{props.subGreeting}</p>
+    </div>
+  );
+}
+
+// Inside another component
+
+return (
+  <div>
+    <Card greeting="hi" subGreeting="hello" />
+    <Card greeting="sup" subGreeting="what's up" />
+  </div>
+);
+```
+
+<!-- slide -->
+
+<h2> 🎩 Props Continued </h2>
+
+The props argument in our Card component defines an object that React will pass to our function when it is called, and it will use whatever attributes we add to our JSX component as key-value pairs on that props object.
+
+For example, if we were to add a console.log in the Card component above, we'd end up seeing this object:
+
+```js
+function Card(props) {
+  console.log(props); // => { greeting: "hi", subGreeting: "hello" }
+
+  return (
+    <div id="card1" className="card">
+      <h1>{props.greeting}</h1>
+      <p>{props.subGreeting}</p>
+    </div>
+  );
+}
+```
+
+<!-- slide -->
+
+<h2> Wireframes </h2>
+
+<img src="https://res.cloudinary.com/dnocv6uwb/image/upload/v1643721399/wireframe_bfc35e.png">
+
 
 ### Deliverables
 
@@ -58,72 +216,6 @@
   - Dynamically render each project name inside the `h4` tag
 
   - Dynamically render each project's about data inside the `p` tag
-
-### Creating a React App
-
-`create-react-app` will build a project folder for our application and install all the dependencies we need (via Node Package Manager).
-
-To create a new React application and start it, run:
-
-```
-npx create-react-app app-name
-cd app-name
-npm start
-```
-
-In addition to React, it gives us:
-
-- Webpack: a tool for bundling and minifying our code (along with a server for running our code in development)
-- Babel: a transpiler that lets us write modern JavaScript and JSX
-
-### Components
-
-Components are the building blocks of React. A component is a function that:
-
-- Takes in some raw data (props)
-- Returns user interface (JSX)
-
-There are some things you'll need to keep in mind:
-
-- The name of your component function must be capitalized. This will not work
-- A component can only return one element. That element can have children, like this:
-
-```js
-function Card() {
-  return (
-    <div id="card1" className="card">
-      <h1>hi</h1>
-      <p>wassup?</p>
-    </div>
-  );
-}
-```
-
-### Props
-
-When you create components, one way to make them dynamic and reusable is by passing in props. For example, if we wanted to create several cards on our page using a Card component, we could do so like this:
-
-```js
-function Card(props) {
-  return (
-    <div id="card1" className="card">
-      <h1>{props.greeting}</h1>
-      <p>{props.subGreeting}</p>
-    </div>
-  );
-}
-
-ReactDOM.render(
-  <div>
-    <Card greeting="hi" subGreeting="hello" />
-    <Card greeting="sup" subGreeting="what's up" />
-  </div>,
-  document.getElementById("root")
-);
-```
-
-The props argument in our Card component defines an object that React will pass to our function when it is called, and it will use whatever attributes we add to our JSX component as key-value pairs on that props object.
-
 ### Resources
 
 - [React](https://reactjs.org/)
