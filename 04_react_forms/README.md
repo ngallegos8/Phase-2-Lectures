@@ -70,6 +70,8 @@ In React, rather than looking into the DOM to get the form's input field values
 when the form is submitted, we use **state** to monitor the user's input **as
 they type**, so that our component state is always _in sync_ with the DOM.
 
+<center><img src="https://res.cloudinary.com/dnocv6uwb/image/upload/v1646072384/controlled-forms_j69gpu.svg" alt="controlled input diagram" height="500" width="1000"></center>
+
 To keep track of each input's value, you need:
 
 1. Some state to manage the input
