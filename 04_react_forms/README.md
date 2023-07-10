@@ -171,7 +171,7 @@ function CommentContainer() {
       <section>
         {commentCards}
         <hr />
-        <CommentForm onAddComment={addComment} />
+        <CommentForm addComment={addComment} />
       </section>
     );
   }
@@ -181,7 +181,7 @@ function CommentContainer() {
 When the user submits the comment, we can use the `handleSubmit` callback in the `onSubmit` event in the `CommentForm`:
 
 ```js
-function CommentForm({ onAddComment }) {
+function CommentForm({ addComment }) {
   const [username, setUsername] = useState("");
   const [comment, setComment] = useState("");
 
@@ -199,7 +199,7 @@ function CommentForm({ onAddComment }) {
       username,
       comment,
     };
-    onAddComment(newComment);
+    addComment(newComment);
   }
 
   return (
