@@ -36,7 +36,13 @@ const ProjectForm = ({onAddProject}) => {
       link: link,
       image: image
     }
-    onAddProject(newProject)
+    fetch("http://localhost:4000/projects",{
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(newProject)
+    })
+    .then((res) => res.json())
+    .then((project) => onAddProject(project))
   }
 
   // Dynamic solution
