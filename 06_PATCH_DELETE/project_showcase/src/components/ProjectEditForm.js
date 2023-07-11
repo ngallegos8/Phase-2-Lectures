@@ -14,7 +14,7 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
   const { name, about, phase, link, image } = formData;
 
   useEffect(() => {
-    fetch(`http://localhost:4000/projects/${projectId}`)
+    fetch(`http://localhost:4000/projects/`)
       .then((res) => res.json())
       .then((project) => setFormData(project));
   }, [projectId]);

@@ -51,25 +51,6 @@ const App = () => {
     setProjectId(projectId);
   };
 
-  const onUpdateProject = (updatedProject) => {
-    const updatedProjects = projects.map((ogProject) => {
-      if (ogProject.id === updatedProject.id) {
-        return updatedProject;
-      } else {
-        return ogProject;
-      }
-    });
-
-    setProjects(updatedProjects);
-  };
-
-  const onDeleteProject = (projectId) => {
-    const updatedProjects = projects.filter(
-      (ogProject) => ogProject.id !== projectId
-    );
-
-    setProjects(updatedProjects);
-  };
 
 
   const renderForm = () => {
@@ -79,11 +60,10 @@ const App = () => {
         <ProjectEditForm
           projectId={projectId}
           completeEditing={completeEditing}
-          onUpdateProject={onUpdateProject}
         />
       );
     } else {
-      return <ProjectForm onAddProject={onAddProject} />;
+      return <ProjectForm onAddProject={onAddProject}/>;
     }
   };
   
@@ -93,7 +73,7 @@ const App = () => {
       {/* update parent state using a callback function */}
       {renderForm()}
       <button onClick={handleUnmount}>Unmount</button>
-      <ProjectList searchQuery = {searchQuery} projects={projects} handleSearch={handleSearch} setProjects = {setProjects} enterProjectEditModeFor={enterProjectEditModeFor} onDeleteProject={onDeleteProject}/>
+      <ProjectList searchQuery = {searchQuery} projects={projects} handleSearch={handleSearch} setProjects = {setProjects} enterProjectEditModeFor={enterProjectEditModeFor}/>
     </div>
   );
 };
