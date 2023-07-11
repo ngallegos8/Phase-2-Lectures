@@ -17,6 +17,14 @@
       "image": "https://i.imgur.com/INs84Uk.png"
     },
     {
+      "id": 3,
+      "name": "Code Bucket",
+      "about": "Web-based CSS, JS and HTML Editor",
+      "phase": 4,
+      "link": "https://code-bucket.netlify.app",
+      "image": "https://i.imgur.com/Hz84TA2.png"
+    },
+    {
       "id": 11,
       "name": "Yourseum",
       "about": "Find great art",
@@ -66,7 +74,7 @@
     },
     {
       "id": 24,
-      "name": "Test",
+      "name": "Locksley To Do",
       "about": "A todo list and calendar app",
       "phase": 4,
       "link": "https://www.locksleyr.com",
