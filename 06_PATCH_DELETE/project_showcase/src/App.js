@@ -50,6 +50,23 @@ const App = () => {
   const enterProjectEditModeFor = (projectId) => {
     setProjectId(projectId);
   };
+  //Patch request
+  const onUpdateProject = (newProject) => {
+    const updatedProjects = projects.map((project) => {
+      if(project.id === newProject.id){
+        return newProject
+      }
+      else{
+        return project
+      }
+    })
+    setProjects(updatedProjects)
+  }
+  //Delete request
+  const onDeleteProject = (projectId) => {
+    const updatedProjects = projects.filter((project) => project.id !== projectId)
+    setProjects(updatedProjects)
+  }
 
 
 
@@ -60,6 +77,7 @@ const App = () => {
         <ProjectEditForm
           projectId={projectId}
           completeEditing={completeEditing}
+          onUpdateProject = {onUpdateProject}
         />
       );
     } else {
@@ -73,7 +91,7 @@ const App = () => {
       {/* update parent state using a callback function */}
       {renderForm()}
       <button onClick={handleUnmount}>Unmount</button>
-      <ProjectList searchQuery = {searchQuery} projects={projects} handleSearch={handleSearch} setProjects = {setProjects} enterProjectEditModeFor={enterProjectEditModeFor}/>
+      <ProjectList searchQuery = {searchQuery} projects={projects} handleSearch={handleSearch} setProjects = {setProjects} enterProjectEditModeFor={enterProjectEditModeFor} onDeleteProject={onDeleteProject}/>
     </div>
   );
 };

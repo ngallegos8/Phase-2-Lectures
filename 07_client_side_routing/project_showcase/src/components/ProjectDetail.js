@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ProjectDetail = () => {
   const [claps, setClaps] = useState(0);
   const [project, setProject] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const id = 1;
+  const { projectId } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:4000/projects/${id}`)
+    fetch(`http://localhost:4000/projects/${projectId}`)
       .then((r) => r.json())
       .then((project) => {
         setProject(project);
+        setIsLoaded(true);
       });
-  }, [id]);
+  }, [projectId]);
+
+  if (!isLoaded) return <h2>Loading...</h2>;
 
   const { image, name, about, link, phase } = project;
 
-  const handleClapClick = () => {
+  function handleClapClick() {
     setClaps((claps) => claps + 1);
   }
 

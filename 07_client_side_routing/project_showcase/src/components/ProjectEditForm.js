@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import {useParams, useHistory} from 'react-router-dom'
 
 const ProjectEditForm = ({ onUpdateProject }) => {
-  const [formData, setFormData] = useState({
+  const [formState, setFormState] = useState({
     name: "",
     about: "",
     phase: "",
@@ -9,21 +10,21 @@ const ProjectEditForm = ({ onUpdateProject }) => {
     image: "",
   });
 
-  const { name, about, phase, link, image } = formData;
+  const { name, about, phase, link, image } = formState;
 
-  // const { id } = useParams()
+  const { id } = useParams() // {id: 1}
 
-  // const history = useHistory()
+  const history = useHistory()
 
   useEffect(() => {
-    fetch(`http://localhost:4000/projects/1`)
+    fetch(`http://localhost:4000/projects/${id}`)
       .then((res) => res.json())
-      .then((project) => setFormData(project));
-  }, []);
+      .then((project) => setFormState(project));
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormState({ ...formState, [name]: value });
   };
 
   const handleSubmit = (e) => {
@@ -34,13 +35,14 @@ const ProjectEditForm = ({ onUpdateProject }) => {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(formState),
     };
 
-    fetch(`http://localhost:4000/projects/1`, configObj)
+    fetch(`http://localhost:4000/projects/${id}`, configObj)
       .then((resp) => resp.json())
       .then((updatedProj) => {
         onUpdateProject(updatedProj);
+        history.push(`/projects/${id}`)
       });
   };
 

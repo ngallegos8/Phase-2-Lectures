@@ -14,7 +14,7 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
   const { name, about, phase, link, image } = formData;
 
   useEffect(() => {
-    fetch(`http://localhost:4000/projects/`)
+    fetch(`http://localhost:4000/projects/${projectId}`)
       .then((res) => res.json())
       .then((project) => setFormData(project));
   }, [projectId]);
@@ -25,21 +25,12 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
   };
 
   function handleSubmit(e) {
-    e.preventDefault();
     fetch(`http://localhost:4000/projects/${projectId}`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accepts: "application/json",
-      },
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify(formData),
     })
-      .then((resp) => resp.json())
-      .then((project) => {
-        onUpdateProject(project);
-      });
-
-    // Add code here
+    .then((res) => res.json())
     completeEditing();
   }
 
