@@ -207,7 +207,6 @@ return (
   </header>
 );
 ```
-
 <!-- slide style="text-align: left;" -->
 
 <h2 style="text-align: center;"><strong> Using Navlink </strong></h2>
@@ -221,3 +220,4 @@ We want to use `Link` for navigation in our application. It will ensure that a p
 💥 Link will be provided a `to` prop which indicates where the link should navigate to (generates the href)
 
 <!-- slide style="text-align: left;" -->
+
