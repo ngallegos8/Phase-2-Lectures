@@ -35,9 +35,30 @@
 
 - Given the array of `projects`, filter the projects that include the value of the search query
 
+<h2 style="text-align: center;"><strong>Handling events in vanilla JS</strong></h2>
+
+<br>
+
+In vanilla JS, our steps for handling events looked like this:
+
+<br>
+
+```js
+// 1. find a piece of DOM:
+const pizza = document.getElementById("pizza");
+// 2. Add an event listener to that piece
+pizza.addEventListener;
+// 3. Give type and callback to the event listener:
+pizza.addEventListener("click", () => {
+  console.log("It's Pizza Time!");
+});
+```
+
+<br>
+
 ### Events
 
-In React, we add event handlers directly to our JSX. We still must supply the event handler with a callback. For example, if we're trying to implement a click handler on a button, we could do so by passing a callback function to the onClick attribute of an element:
+We still must supply the event handler with a callback. For example, if we're trying to implement a click handler on a button, we could do so by passing a callback function to the onClick attribute of an element:
 
 ```js
 function Counter() {
