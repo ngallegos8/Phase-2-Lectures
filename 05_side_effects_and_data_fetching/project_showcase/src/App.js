@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import ProjectForm from "./components/ProjectForm";
 import ProjectList from "./components/ProjectList";
-import {useState, useEffect} from "react"
+import {useState} from "react"
 import ReactDOM from "react-dom"
 const App = () => {
   const [projects, setProjects] = useState([])
@@ -9,23 +9,6 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState("")
 
   const onToggleDarkMode = () => setIsDarkMode(!isDarkMode)
-
-  const handleUnmount = () => {
-    ReactDOM.unmountComponentAtNode(document.getElementById("root"))
-  }
-
-  console.log("Returning JSX Component")
-
-  useEffect(()=> {
-    console.log("Running the UseEffect Hook")
-    fetch("http://localhost:4000/projects")
-    .then((res) => res.json())
-    .then((project) => setProjects(project))
-
-    return () => {
-      console.log("Cleanup Function Executed!")
-    }
-  }, [])
 
   // function onToggleDarkMode(){
   //   setIsDarkMode(!isDarkMode)
@@ -43,7 +26,6 @@ const App = () => {
   return (
     <div className="App">
       <Header isDarkMode = {isDarkMode} onToggleDarkMode = {onToggleDarkMode}/>
-      {/* update parent state using a callback function */}
       <ProjectForm onAddProject = {onAddProject}/>
       <button onClick={handleUnmount}>Unmount</button>
       <ProjectList searchQuery = {searchQuery} projects={projects} handleSearch={handleSearch} setProjects = {setProjects}/>

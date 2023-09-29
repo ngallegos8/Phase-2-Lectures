@@ -26,25 +26,6 @@ const ProjectForm = ({onAddProject}) => {
   function handleImage(e){
     setImage(e.target.value)
   }
-
-  function handleSubmit(e){
-    e.preventDefault()
-    const newProject = {
-      name: name,
-      about: about,
-      phase: phase,
-      link: link,
-      image: image
-    }
-    fetch("http://localhost:4000/projects",{
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(newProject)
-    })
-    .then((res) => res.json())
-    .then((project) => onAddProject(project))
-  }
-
   // Dynamic solution
   // const [formData, setFormData] = useState({
   //   name: "",
@@ -59,18 +40,18 @@ const ProjectForm = ({onAddProject}) => {
   //   setFormData((formData) => ({...formData, [name] : value}))
   // }
 
-  // function handleSubmit(e){
-  //   e.preventDefault()
-  //   const newProject = {
-  //     name: formData.name,
-  //     about: formData.about,
-  //     phase: formData.phase,
-  //     link: formData.link,
-  //     image: formData.image
-  //   }
-  //   onAddProject(newProject)
+  function handleSubmit(e){
+    e.preventDefault()
+    const newProject = {
+      name: formData.name,
+      about: formData.about,
+      phase: formData.phase,
+      link: formData.link,
+      image: formData.image
+    }
+    onAddProject(newProject)
 
-  // }
+  }
 
 
   return (
