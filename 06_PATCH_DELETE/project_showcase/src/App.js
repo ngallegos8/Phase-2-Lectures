@@ -42,56 +42,14 @@ const App = () => {
   const onAddProject = (newProject) => {
     setProjects([...projects, newProject])
   }
-
-  const completeEditing = () => {
-    setProjectId(null);
-  };
-
-  const enterProjectEditModeFor = (projectId) => {
-    setProjectId(projectId);
-  };
-  //Patch request
-  const onUpdateProject = (newProject) => {
-    const updatedProjects = projects.map((project) => {
-      if(project.id === newProject.id){
-        return newProject
-      }
-      else{
-        return project
-      }
-    })
-    setProjects(updatedProjects)
-  }
-  //Delete request
-  const onDeleteProject = (projectId) => {
-    const updatedProjects = projects.filter((project) => project.id !== projectId)
-    setProjects(updatedProjects)
-  }
-
-
-
-  const renderForm = () => {
-    console.log(projectId)
-    if (projectId) {
-      return (
-        <ProjectEditForm
-          projectId={projectId}
-          completeEditing={completeEditing}
-          onUpdateProject = {onUpdateProject}
-        />
-      );
-    } else {
-      return <ProjectForm onAddProject={onAddProject}/>;
-    }
-  };
   
   return (
     <div className="App">
       <Header isDarkMode = {isDarkMode} onToggleDarkMode = {onToggleDarkMode}/>
       {/* update parent state using a callback function */}
-      {renderForm()}
+      <ProjectForm onAddProject = {onAddProject}/>
       <button onClick={handleUnmount}>Unmount</button>
-      <ProjectList searchQuery = {searchQuery} projects={projects} handleSearch={handleSearch} setProjects = {setProjects} enterProjectEditModeFor={enterProjectEditModeFor} onDeleteProject={onDeleteProject}/>
+      <ProjectList searchQuery = {searchQuery} projects={projects} handleSearch={handleSearch} setProjects = {setProjects}/>
     </div>
   );
 };

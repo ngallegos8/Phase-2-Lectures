@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
-const ProjectListItem = ({ id, about, image, link, name, phase, enterProjectEditModeFor, onDeleteProject}) => {
+const ProjectListItem = ({ id, about, image, link, name, phase}) => {
   const [count, setCount] = useState(0)
 
   function handleClick(){
@@ -8,21 +8,6 @@ const ProjectListItem = ({ id, about, image, link, name, phase, enterProjectEdit
     setCount(count + 1)
   }
 
-  const handleEditClick = () => {
-    console.log(id)
-    enterProjectEditModeFor(id);
-  };
-
-  const handleDeleteClick = () => {
-    console.log("deleted")
-    fetch(`http://localhost:4000/projects/${id}`, {
-      method: "DELETE",
-    })
-    .then(res => res.json())
-    .then(onDeleteProject(id))
-
-    
-  };
   return (
     <li className="card">
       <figure className="image">
@@ -43,12 +28,7 @@ const ProjectListItem = ({ id, about, image, link, name, phase, enterProjectEdit
       <footer className="extra">
         <span className="badge blue">Phase {phase}</span>
         <div className="manage">
-          <button onClick={handleEditClick}>
-            <FaPencilAlt />
-          </button>
-          <button onClick={handleDeleteClick}>
-            <FaTrash />
-          </button>
+          
         </div>
       </footer>
     </li>
