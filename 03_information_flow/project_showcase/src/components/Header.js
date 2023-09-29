@@ -1,15 +1,15 @@
 import React, {useState} from "react";
 
-const Header = ({isDarkMode, onToggleDarkMode}) => {
+const Header = () => {
+  const [isDarkMode, setIsDarkMode] = useState(true)
 
   //Update state when button is clicked
   // const handleClick = () => {
   //   setIsDarkMode(!isDarkMode)
   // }
-  
+
   function handleClick(){
-    //Callback Function to update the parent state
-    onToggleDarkMode()
+    setIsDarkMode(!isDarkMode)
   }
   return (
     <header>

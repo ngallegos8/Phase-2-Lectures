@@ -1,33 +1,41 @@
+import ProjectListItem from "./ProjectListItem";
 import React, {useState} from "react"
-const ProjectListItem = ({ id, about, image, link, name, phase }) => {
-  const [count, setCount] = useState(0)
+const ProjectList = ({ projects }) => {
 
-  function handleClick(){
-    // setCount((claps) => claps + 1)
-    setCount(count + 1)
+  const [searchQuery, setSearchQuery] = useState("")
+
+  const handleSearch = (event) => {
+    console.log(searchQuery)
+    setSearchQuery(event.target.value)
   }
+
+  const results = projects.filter((project) => (
+    project.name.toLowerCase().includes(searchQuery.toLowerCase())
+  ))
+
+  const projectListItems = results.map((project) => (
+    // <ProjectListItem key={project.id} {...project} />
+    <ProjectListItem key={project.id} id = {project.id} about = {project.about} image ={project.image} link = {project.link} name = {project.name} phase = {project.phase}/>
+  ));
+
+
   return (
-    <li className="card">
-      <figure className="image">
-        <img src={image} alt={name} />
-        <button className="claps" onClick={handleClick}>👏{count}</button>
-      </figure>
+    <section>
+      <h2>Projects</h2>
 
-      <section className="details">
-        <h4>{name}</h4>
-        <p>{about}</p>
-        {link ? (
-          <p>
-            <a href={link}>Link</a>
-          </p>
-        ) : null}
-      </section>
+      <div className="filter">
+        <button>All</button>
+        <button>Phase 5</button>
+        <button>Phase 4</button>
+        <button>Phase 3</button>
+        <button>Phase 2</button>
+        <button>Phase 1</button>
+      </div>
+      <input type="text" placeholder="Search..." onChange={handleSearch}/>
 
-      <footer className="extra">
-        <span className="badge blue">Phase {phase}</span>
-      </footer>
-    </li>
+      <ul className="cards">{projectListItems}</ul>
+    </section>
   );
 };
 
-export default ProjectListItem;
+export default ProjectList;
