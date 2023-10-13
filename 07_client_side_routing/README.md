@@ -2,39 +2,32 @@
 
 ### SWBATs:
 
-- [ ] Review the difference between server-side and client-side routing
-- [ ] Observe a refactor to include client-side routing using React Router V5
+- [ ] Explain client side routing
 - [ ] Explain what a nested route is
 - [ ] Observe how to handle nested client-side routes
+
+Client side routing, is a technicque used in single page applications where the routing or navigation within a web application is handled by the browser on the client side. For example, when you are on google and do a search, you'll notice that the url changes as the user navigates the page. This is similar to server side routing, where each url change results in a full page reload from the server. The benefits of client side routing is improved user expereince, and performance.
 
 ## Deliverables
 
 #### 1. Install and setup react router
 
-- React Router has been updated to V6 but V5 is used in the curriculum.
-
-- To install V5 run this command: `npm install react-router-dom@5.3.0` otherwise, V6 will install by default
+- To install V6 run this command: `npm install react-router-dom@6` otherwise, V6 will install by default
 
 - Wrap the `App` component inside of the `BrowserRouter` component that will be imported from the `react-router-dom` library
+- In the `App` component import `createBrowserRouter`, `createRoutesFromElements`, ` Route`, `RouterProvider` from the `react-router-dom` library
 
-#### 2. Use Switch and Route to set up initial routes so we can conditionally render components based on URL
+#### 2.  Use createBrowserRouter, createRoutesFromElements, Route, and RouterProvider to conditionally render compoments based on the url
 
-- Import the `Switch` component from the `react-router-dom` library and wrap the components designated for routing
-
-- Import the `Route` component from the `react-router-dom` library and wrap each individual component designated for routing
-
-  - Provide the `path` prop to the `Route` component to create a URL path associated with the component
-
-- Demonstrate each route in the browser to confirm desired expectation is occuring
-
-- Demonstrate the use of the `exact` prop passed to the `Route` component
+- Demonstrate creating routes and testing in the browser, discuss using `path` and `element` in the route component
 
 #### 3. Add navigation to the application using the `Link` and `NavLink` components
 
-- Convert any html anchor tags to `Link` or `NavLink`
+- Demonstrate creating `Link` and `NavLink`
 
-- Demonstrate the difference between `Link` and `NavLink`
+#### 4. Create a nested route
 
-#### 4. Create a nested route for the project show page inside of the `ProjectList` component
+
+#### 5. Discuss loaders and passing props using react router dom v6
 
 
