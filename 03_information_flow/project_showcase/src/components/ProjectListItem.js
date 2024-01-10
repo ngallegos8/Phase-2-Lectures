@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 
 function ProjectListItem({project}){
-    const [clapCounts, setClapCounts] = useState(0) // DELIVERABLE 2-1
+    const [clapCounts, setClapCounts] = useState(0)
     
-    function handleClaps () { // DELIVERABLE 2-2
+    function handleClaps () {
         console.log(clapCounts)
         setClapCounts(clapCounts + 1)
     }
@@ -13,7 +13,6 @@ function ProjectListItem({project}){
       <li className="card">
           <figure className="image">
               <img src={project.image} alt={project.name}></img>
-               {/* <button className="claps" onClick={handleClaps}>👏{0}</button> DELIVERABLE 2-3 */}
           </figure>
 
           <section className="details">
