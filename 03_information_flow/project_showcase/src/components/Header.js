@@ -2,7 +2,6 @@ import React, {useState} from "react";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(true)
-
   //Update state when button is clicked
   // const handleClick = () => {
   //   setIsDarkMode(!isDarkMode)
