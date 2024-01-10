@@ -1,24 +1,21 @@
 import React, {useState} from "react";
 
-const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true)
-
-  //Update state when button is clicked
-  // const handleClick = () => {
-  //   setIsDarkMode(!isDarkMode)
-  // }
+const Header = ({ isDarkMode, onToggleDarkMode }) => {    /* DELIVERABLE 2-2.3 Imports prop */
 
   function handleClick(){
-    setIsDarkMode(!isDarkMode)
+    onToggleDarkMode()                                    /* DELIVERABLE 2-3 Calls prop */
+    console.log(isDarkMode)
   }
   return (
+    <div>
     <header>
       <h1>
         <span className="logo">{"//"}</span>
         Project Showcase
       </h1>
-      <button onClick={handleClick}>{isDarkMode ? "Light Mode" : "Dark Mode"}</button>
+      <button onClick={handleClick}>{isDarkMode ? "Light Mode" : "Dark Mode"} </button>
     </header>
+    </div>
   );
 }
 

@@ -1,13 +1,11 @@
 import ProjectListItem from "./ProjectListItem";
 import React, {useState} from "react"
-const ProjectList = ({ projects }) => {
+const ProjectList = ({ projects, searchQuery, handleSearch }) => {
 
-  const [searchQuery, setSearchQuery] = useState("")
-
-  const handleSearch = (event) => {
-    console.log(searchQuery)
-    setSearchQuery(event.target.value)
-  }
+  // const handleSearch = (event) => {
+  //   console.log(searchQuery)
+  //   setSearchQuery(event.target.value)
+  // }
 
   const results = projects.filter((project) => (
     project.name.toLowerCase().includes(searchQuery.toLowerCase())
