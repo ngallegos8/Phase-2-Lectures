@@ -2,7 +2,6 @@ import Header from "./components/Header";
 import ProjectForm from "./components/ProjectForm";
 import ProjectList from "./components/ProjectList";
 import {useState} from "react"
-import ReactDOM from "react-dom"
 const App = () => {
   const [projects, setProjects] = useState([])
   const [isDarkMode, setIsDarkMode] = useState(true)
