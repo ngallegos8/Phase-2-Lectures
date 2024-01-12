@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import { FaPencilAlt, FaTrash } from "react-icons/fa";
 const ProjectListItem = ({ id, about, image, link, name, phase }) => {
   const [count, setCount] = useState(0)
 
