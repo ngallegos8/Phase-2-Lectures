@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const ProjectForm = ({onAddProject}) => {
+const ProjectForm = ({onAddProject,projects}) => {
   const [name, setName] = useState("")
   const [about, setAbout] = useState("")
   const [phase, setPhase] = useState("")
@@ -26,31 +26,25 @@ const ProjectForm = ({onAddProject}) => {
   function handleImage(e){
     setImage(e.target.value)
   }
-  // Dynamic solution
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   about: "",
-  //   phase: "",
-  //   link: "",
-  //   image: ""
-  // })
-
-  // const handleOnChange = (e) => {
-  //   const {name, value} = e.target
-  //   setFormData((formData) => ({...formData, [name] : value}))
-  // }
 
   function handleSubmit(e){
     e.preventDefault()
     const newProject = {
-      name: formData.name,
-      about: formData.about,
-      phase: formData.phase,
-      link: formData.link,
-      image: formData.image
+      id: projects.length+1,
+      name: name,
+      about: about,
+      phase: phase,
+      link: link,
+      image: image
     }
-    onAddProject(newProject)
 
+    fetch("http://localhost:4000/projects", {           // fetch database
+      method: "POST",                                   // POST to update database
+      headers: {"Content-Type":"application/json"},     // header defines the content type of what we're posting
+      body: JSON.stringify(newProject)                  // converts a JavaScript value to a JSON string
+    })
+    .then((response) => response.json())                // turns JSON string into JSON file?
+    .then((project) => onAddProject(project))           // inserts JSON file data into the callback function 'onAddProject(data)'
   }
 
 
